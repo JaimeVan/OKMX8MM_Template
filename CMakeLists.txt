@@ -57,9 +57,24 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc amazon-freertos/lib/FreeRTOS/portable/GCC/ARM_CM4F CMSIS/Include CMSIS/Driver/Include devices amazon-freertos/lib/include amazon-freertos/lib/include/private devices/MIMX8MM6/drivers devices/MIMX8MM6 devices/MIMX8MM6/utilities/str devices/MIMX8MM6/utilities devices/MIMX8MM6/cmsis_drivers devices/MIMX8MM6/template)
+include_directories(Core/Inc
+        amazon-freertos/lib/FreeRTOS/portable/GCC/ARM_CM4F
+        CMSIS/Include
+        CMSIS/Driver/Include
+        devices
+        amazon-freertos/lib/include
+        amazon-freertos/lib/include/private
+        devices/MIMX8MM6/drivers devices/MIMX8MM6
+        devices/MIMX8MM6/utilities/str
+        devices/MIMX8MM6/utilities
+        devices/MIMX8MM6/cmsis_drivers
+        devices/MIMX8MM6/template
+        middleware/multicore/rpmsg_lite/lib/include
+        middleware/multicore/rpmsg_lite/lib/include/platform/imx8mm_m4
+        middleware/multicore/rpmsg_lite/template_application
+        )
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "devices/*.*" "amazon-freertos/*.*" "CMSIS/*.*")
+file(GLOB_RECURSE SOURCES "Core/*.*" "devices/*.*" "amazon-freertos/*.*" "CMSIS/*.*" "middleware/*.*")
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/MIMX8MM6xxxxx_cm4_ram.ld)
 
